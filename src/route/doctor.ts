@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getAllDoctors } from "../controller/doctor.js";
-
+import upload from "../config/cloudinary.js";
+import { getAllDoctors, AddDortors } from "../controller/doctor.js";
 
 const router = Router();
 
-router.get("/doctors",getAllDoctors);
-
+router.get("/doctors", getAllDoctors);
+router.post("/doctors", upload.single("image"), AddDortors);
 export default router;
